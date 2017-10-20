@@ -13,7 +13,11 @@ public class Doctor {
      * @param theCol The column this Doctor starts at.
      */
     public Doctor(int theRow, int theCol) {
-
+        //Place the doctor somewhere on the grd randomly
+    theRow = (int)(Math.random()*12);  
+    theCol = (int)(Math.random()*12);
+    //Make a Doctor 
+    Doctor bob  = new Doctor(theRow,theCol);
     }
 
     /**
@@ -28,7 +32,7 @@ public class Doctor {
      * @param newCol The column the player clicked on.
      */
     public void move(int newRow, int newCol) {
-
+    
     }
 
     /**

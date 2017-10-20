@@ -9,6 +9,8 @@ public class CatchGame {
      * Instance variables go up here
      * Make sure to create a Board, 3 Daleks, and a Doctor
      */
+    Board b = new Board(12,12);
+    Doctor D = new Doctor(0,1);
     
     
 
@@ -26,7 +28,12 @@ public class CatchGame {
      * selects a square, when the Daleks move, when the game is won/lost.
      */
     public void playGame() {
-
+        //Keep playing until the doctor gets capture 
+        //or the daleks have crashed 
+    while(true){
+        
+        
+    }
     }
 
 }
