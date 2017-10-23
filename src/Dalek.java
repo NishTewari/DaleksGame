@@ -59,8 +59,11 @@ public class Dalek {
     /**
      * Sets the Dalek to be in a crashed state.
      */
-    public void crash() {
-       
+    public void crash(Dalek e) {
+     if(this.row > e.row){
+         
+     } 
+     
     }
 
     /**
