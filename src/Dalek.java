@@ -15,15 +15,9 @@ public class Dalek {
      * @param theCol The column this Dalek starts at.
      */
     public Dalek(int theRow, int theCol) {
-        // int[]Dalekbot = new int[3];
-        //make random coordinates for the Daleks
-         theRow = (int)(Math.random()*12);
-         theCol = (int)(Math.random()*12);
-         //Make three Daleks 
-         Dalek b1 = new Dalek(theRow, theCol); 
-         Dalek b2 = new Dalek(theRow, theCol);  
-         Dalek b3 = new Dalek(theRow, theCol); 
-         
+       this.row = theRow;
+       this.col = theCol;
+       
     }
 
     /**
@@ -61,7 +55,7 @@ public class Dalek {
      */
     public void crash(Dalek e) {
      if(this.row > e.row){
-         
+     hasCrashed = true;   
      } 
      
     }
