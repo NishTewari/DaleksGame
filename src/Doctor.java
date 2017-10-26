@@ -1,13 +1,14 @@
 
-/** This class models the Doctor in the game. A Doctor has
- *  a position and can move to a new position.
+/**
+ * This class models the Doctor in the game. A Doctor has a position and can
+ * move to a new position.
  */
 public class Doctor {
 
     //Instance  Variables
     private int row, col;
+    private boolean isCaptured;
 
-    
     /**
      * Initializes the variables for a Doctor.
      *
@@ -15,9 +16,9 @@ public class Doctor {
      * @param theCol The column this Doctor starts at.
      */
     public Doctor(int theRow, int theCol) {
-     this.row = theRow;
-     this.col = theCol;
-     
+        this.row = theRow;
+        this.col = theCol;
+
     }
 
     /**
@@ -32,14 +33,40 @@ public class Doctor {
      * @param newCol The column the player clicked on.
      */
     public void move(int newRow, int newCol) {
-        //Stay in position 
-    if(this.row == this.row && this.col == this.col){
-        newRow = this.row;
-        newCol = this.col;
-    }else if(newRow == this.row-- && newCol == this.col){
-        newRow = this.row--;
-        newCol = this.col;
-    }
+        //VERTICAL MOVEMENT 
+        //Move Downwards  
+        if (newRow == this.row + 1) {
+            this.row++;
+            //Move Upwards
+        } else if (newRow == this.row - 1) {
+            this.row--;
+
+            //HORIZONTAL MOVEMENT 
+            //Move towards the right 
+        } else if (newCol == this.col + 1) {
+            this.col++;
+            //Move towards the left 
+        } else {
+            this.col--;
+        }
+
+        //DIAGONAL MOVEMENT 
+        //Move UpRight
+        if (newRow == this.row - 1 && newCol == this.col + 1) {
+            this.row--;
+            this.col++;
+            //Move DownRight 
+        } else {
+            this.row++;
+            this.col--;
+        }
+        //TELEPORTATION
+        if (newRow > this.row + 1 || newRow < this.row - 1 || newCol > this.col + 1 || newCol < this.col - 1) {
+            this.row = (int) (Math.random() * 12);
+            this.col = (int) (Math.random() * 12);
+        }
+
+
     }
 
     /**
@@ -48,7 +75,7 @@ public class Doctor {
      * @return This Doctor's row.
      */
     public int getRow() {
-    return this.row;
+        return this.row;
     }
 
     /**
@@ -61,4 +88,26 @@ public class Doctor {
 
     }
 
+    /**
+     *
+     * @param a the dalek used to check if doctor is at the same location as
+     * dalek
+     * @return true is doctor is captured, otherwise its false
+     */
+    public void capture(Dalek a) {
+        if (this.row == a.getRow() && this.col == a.getCol()) {
+            isCaptured = true;
+        } else {
+            isCaptured = false;
+        }
+    }
+
+    /**
+     * Returns Whether or not the Doctor has been Captured
+     *
+     * @return True if Doctor has been captured, False otherwise
+     */
+    public boolean isCaptured() {
+        return isCaptured;
+    }
 }

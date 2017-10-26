@@ -40,11 +40,11 @@ public class Dalek {
         //HORIZONTAL MOVEMENT
         //Move Left towards Doctor
         if (this.row == doc.getRow() && this.col > doc.getCol()) {
-            this.row--;
+            this.col--;
             
             //Move right towards Doctor 
         } else if (this.row == doc.getRow()&& this.col < doc.getCol()) {
-            this.row ++;
+            this.col ++;
         }
         //DIAGONAL MOVEMENT
         //Move DownLEFT towards Doctor
@@ -80,19 +80,21 @@ public class Dalek {
     /**
      * Sets the Dalek to be in a crashed state.
      */
-    public void crash(Dalek e) {
-        if (this.row == e.row && this.col == e.col) {
+    public void crash(Dalek a) {
+        if (this.row == a.row && this.col == a.col) {
             hasCrashed = true;
-        }
+        }else{
+            hasCrashed = false;
 
     }
-
+    }
     /**
      * Returns whether or not this Dalek has crashed.
      *
      * @return true if this Dalek has crashed, false otherwise
      */
-    public boolean hasCrashed() {
-        return false;
-    }
+     public boolean hasCrashed(){
+       return hasCrashed;
+     }
+    
 }
