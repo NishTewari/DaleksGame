@@ -15,8 +15,8 @@ public class BoardExample {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Board b = new Board(8, 8);
-        b.putPeg(Color.BLUE, 3, 5);
+        Board b = new Board(12, 12);
+        b.putPeg(Color.GRAY, 3, 5);
         b.putPeg(Color.CYAN, 1, 2);
 
         //Remove a Peg

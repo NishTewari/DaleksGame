@@ -15,9 +15,9 @@ public class Dalek {
      * @param theCol The column this Dalek starts at.
      */
     public Dalek(int theRow, int theCol) {
-       this.row = theRow;
-       this.col = theCol;
-       
+        this.row = theRow;
+        this.col = theCol;
+
     }
 
     /**
@@ -29,7 +29,34 @@ public class Dalek {
      * @param doc The Doctor to move towards.
      */
     public void advanceTowards(Doctor doc) {
-        
+        //VERTICAL MOVEMENT
+        //move upwards towards doctor
+        if (this.col == doc.getCol() && this.row > doc.getRow()) {
+            this.row--;
+            //move downwards towards doctor 
+        } else if (this.col == doc.getCol() && this.row < doc.getRow()) {
+            this.row++;
+        }
+        //HORIZONTAL MOVEMENT
+        //Move Left towards Doctor
+        if (this.row == doc.getRow() && this.col > doc.getCol()) {
+            this.row--;
+            
+            //Move right towards Doctor 
+        } else if (this.row == doc.getRow()&& this.col < doc.getCol()) {
+            this.row ++;
+        }
+        //DIAGONAL MOVEMENT
+        //Move DownLEFT towards Doctor
+        if(this.row < doc.getRow() && this.col > doc.getRow()){
+            this.row ++;
+            this.col --;
+        }
+        //Move UpRIGHT towards Doctor 
+        if(this.row > doc.getRow() && this.col < doc.getRow()){
+         this.row --;
+         this.col --;
+        }
     }
 
     /**
@@ -54,10 +81,10 @@ public class Dalek {
      * Sets the Dalek to be in a crashed state.
      */
     public void crash(Dalek e) {
-     if(this.row > e.row){
-     hasCrashed = true;   
-     } 
-     
+        if (this.row == e.row && this.col == e.col) {
+            hasCrashed = true;
+        }
+
     }
 
     /**

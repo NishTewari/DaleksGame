@@ -4,8 +4,10 @@
  */
 public class Doctor {
 
+    //Instance  Variables
     private int row, col;
 
+    
     /**
      * Initializes the variables for a Doctor.
      *
@@ -30,7 +32,14 @@ public class Doctor {
      * @param newCol The column the player clicked on.
      */
     public void move(int newRow, int newCol) {
-    
+        //Stay in position 
+    if(this.row == this.row && this.col == this.col){
+        newRow = this.row;
+        newCol = this.col;
+    }else if(newRow == this.row-- && newCol == this.col){
+        newRow = this.row--;
+        newCol = this.col;
+    }
     }
 
     /**

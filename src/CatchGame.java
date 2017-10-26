@@ -12,12 +12,14 @@ public class CatchGame {
      * Instance variables go up here
      * Make sure to create a Board, 3 Daleks, and a Doctor
      */
+    int theRow = (int)(Math.random()*12);
+    int theCol = (int)(Math.random()*12);
     Board b = new Board(12,12);
-    Doctor D = new Doctor(4,9);
-    Dalek b1 = new Dalek(8,0);
-    Dalek b2 = new Dalek(5,7);
-    Dalek b3 = new Dalek(2,9);
-    
+    Doctor D = new Doctor(theRow,theCol);
+    Dalek b1 = new Dalek(theRow,theCol);
+    Dalek b2 = new Dalek(theRow,theCol);
+    Dalek b3 = new Dalek(theRow,theCol);
+     
 
     /**
      * The constructor for the game. 
@@ -26,7 +28,7 @@ public class CatchGame {
      */
     public CatchGame(){
     //Doctor    
-    b.putPeg(Color.GREEN,4,9);
+    b.putPeg(Color.GREEN, 4, 9);
     
     //Daleks
     b.putPeg(Color.BLACK, 8, 0);
@@ -41,10 +43,9 @@ public class CatchGame {
     public void playGame() {
         //Keep playing until the doctor gets capture 
         //or the daleks have crashed 
-    while(true){
+      
         
-        
-    }
+    
     }
 
 }
