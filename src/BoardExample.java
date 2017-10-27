@@ -20,7 +20,7 @@ public class BoardExample {
         b.putPeg(Color.CYAN, 1, 2);
 
         //Remove a Peg
-        b.removePeg(3, 5);
+        //b.removePeg(3, 5);
 
         //Message
         b.displayMessage("Hello Everyone");

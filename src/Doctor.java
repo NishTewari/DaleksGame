@@ -37,6 +37,7 @@ public class Doctor {
         //Move Downwards  
         if (newRow == this.row + 1) {
             this.row++;
+             
             //Move Upwards
         } else if (newRow == this.row - 1) {
             this.row--;
