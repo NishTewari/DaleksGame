@@ -37,30 +37,22 @@ public class Doctor {
         //Move Downwards  
         if (newRow == this.row + 1) {
             this.row++;
-             
+
             //Move Upwards
         } else if (newRow == this.row - 1) {
             this.row--;
 
-            //HORIZONTAL MOVEMENT 
-            //Move towards the right 
-        } else if (newCol == this.col + 1) {
+        }
+        //HORIZONTAL MOVEMENT 
+        //Move towards the right    
+        if (newCol == this.col + 1) {
             this.col++;
+
             //Move towards the left 
-        } else {
+        } else if (newCol == this.col - 1) {
             this.col--;
         }
 
-        //DIAGONAL MOVEMENT 
-        //Move UpRight
-        if (newRow == this.row - 1 && newCol == this.col + 1) {
-            this.row--;
-            this.col++;
-            //Move DownRight 
-        } else {
-            this.row++;
-            this.col--;
-        }
         //TELEPORTATION
         if (newRow > this.row + 1 || newRow < this.row - 1 || newCol > this.col + 1 || newCol < this.col - 1) {
             this.row = (int) (Math.random() * 12);
@@ -95,11 +87,11 @@ public class Doctor {
      * dalek
      * @return true is doctor is captured, otherwise its false
      */
-    public void capture(Dalek a) {
+    public boolean capture(Dalek a) {
         if (this.row == a.getRow() && this.col == a.getCol()) {
-            isCaptured = true;
+            return isCaptured = true;
         } else {
-            isCaptured = false;
+           return isCaptured = false;
         }
     }
 

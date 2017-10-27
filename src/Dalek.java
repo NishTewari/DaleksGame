@@ -31,31 +31,20 @@ public class Dalek {
     public void advanceTowards(Doctor doc) {
         //VERTICAL MOVEMENT
         //move upwards towards doctor
-        if (this.col == doc.getCol() && this.row > doc.getRow()) {
+        if (this.row > doc.getRow()) {
             this.row--;
             //move downwards towards doctor 
-        } else if (this.col == doc.getCol() && this.row < doc.getRow()) {
+        } else if (this.row < doc.getRow()) {
             this.row++;
         }
         //HORIZONTAL MOVEMENT
         //Move Left towards Doctor
-        if (this.row == doc.getRow() && this.col > doc.getCol()) {
+        if (this.col > doc.getCol()) {
             this.col--;
-            
+
             //Move right towards Doctor 
-        } else if (this.row == doc.getRow()&& this.col < doc.getCol()) {
-            this.col ++;
-        }
-        //DIAGONAL MOVEMENT
-        //Move DownLEFT towards Doctor
-        if(this.row < doc.getRow() && this.col > doc.getRow()){
-            this.row ++;
-            this.col --;
-        }
-        //Move UpRIGHT towards Doctor 
-        if(this.row > doc.getRow() && this.col < doc.getRow()){
-         this.row --;
-         this.col --;
+        } else if (this.col < doc.getCol()) {
+            this.col++;
         }
     }
 
@@ -80,21 +69,21 @@ public class Dalek {
     /**
      * Sets the Dalek to be in a crashed state.
      */
-    public void crash(Dalek a) {
+    public boolean crash(Dalek a) {
         if (this.row == a.row && this.col == a.col) {
-            hasCrashed = true;
-        }else{
-            hasCrashed = false;
+           return hasCrashed = true;
+        } else {
+           return  hasCrashed = false;
 
+        }
     }
-    }
+
     /**
      * Returns whether or not this Dalek has crashed.
      *
      * @return true if this Dalek has crashed, false otherwise
      */
-     public boolean hasCrashed(){
-       return hasCrashed;
-     }
-    
+    public boolean hasCrashed() {
+        return hasCrashed;
+    }
 }

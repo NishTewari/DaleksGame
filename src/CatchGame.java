@@ -37,8 +37,6 @@ public class CatchGame {
      * selects a square, when the Daleks move, when the game is won/lost.
      */
     public void playGame() {
-        Doctor doc = new Doctor(D.getRow(), D.getCol());
-
         //Keep playing until the doctor gets capture 
         //or the daleks have crashed 
         while (D.isCaptured() == false || (b1.hasCrashed() == false && b2.hasCrashed() == false
@@ -49,23 +47,68 @@ public class CatchGame {
             int clickRow = click.getRow();
             int clickCol = click.getCol();
 
-            //If the Doctor is Captured then Game Over!, you lose
-            if (D.isCaptured() == true) {
+            //Move Doctor According to the click 
+            b.removePeg(D.getRow(), D.getCol());
+            D.move(clickRow, clickCol);
+            b.putPeg(Color.GREEN, D.getRow(), D.getCol());
+
+
+            //Remove the Pegs of the Daleks from current position 
+            b.removePeg(b1.getRow(), b1.getCol());
+            b.removePeg(b2.getRow(), b2.getCol());
+            b.removePeg(b3.getRow(), b3.getCol());
+
+            //Have the Daleks move towards the doctor only if they have not crashed
+            if (b1.hasCrashed() == false) {
+                b1.advanceTowards(D);
+            }
+
+            if (b2.hasCrashed() == false) {
+                b2.advanceTowards(D);
+            }
+
+            if (b3.hasCrashed() == false) {
+                b3.advanceTowards(D);
+            }
+
+            //Put a Peg for the daleks of their New Position
+            b.putPeg(Color.BLACK, b1.getRow(), b1.getCol());
+            b.putPeg(Color.BLACK, b2.getRow(), b2.getCol());
+            b.putPeg(Color.BLACK, b3.getRow(), b3.getCol());
+
+
+            //CHECK IF DALEKS HAVE CRASHED
+            //Check crash with b1 and b2, Put Red peg if they crash
+            if (b1.crash(b2)) {
+                b.putPeg(Color.RED, b1.getRow(), b1.getCol());
+            }
+            //Check crash with b1 and b3, Put Red peg if they crash
+            if (b1.crash(b3)) {
+                b.putPeg(Color.RED, b1.getRow(), b1.getCol());
+            }
+            //Check crash with b2 and b3, Put Red peg if they crash
+            if (b2.crash(b3)) {
+                b.putPeg(Color.RED, b3.getRow(), b3.getCol());
+            }
+
+            //If all the daleks have crashed, you WIN
+            if (b1.crash(b2) && b1.crash(b3) && b2.crash(b3)) {
+                b.displayMessage("You WIN!");
+                break;
+            }
+
+            //If the Doctor is Captured then Game Over!, you LOSE
+            if (D.capture(b1) || D.capture(b2) || D.capture(b3)) {
                 b.displayMessage(" YOU LOST!");
                 break;
             }
-            //If all the daleks have crashed, you win
-            if (b1.hasCrashed() == true && b2.hasCrashed() == true
-                    && b3.hasCrashed() == true) {
-                b.displayMessage(" You Win!");
-            }
 
-            if (click.getRow() == D.getRow() - 1) {
-                doc.move(D.getRow() + 1, D.getCol());
 
-            }
+
+
+
+
+
         }
-
     }
-
 }
