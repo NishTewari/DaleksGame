@@ -39,8 +39,7 @@ public class CatchGame {
     public void playGame() {
         //Keep playing until the doctor gets capture 
         //or the daleks have crashed 
-        while (D.isCaptured() == false || (b1.hasCrashed() == false && b2.hasCrashed() == false
-                && b3.hasCrashed() == false)) {
+        while (true) {
 
             //Click 
             Coordinate click = b.getClick();
@@ -52,30 +51,20 @@ public class CatchGame {
             D.move(clickRow, clickCol);
             b.putPeg(Color.GREEN, D.getRow(), D.getCol());
 
-
             //Remove the Pegs of the Daleks from current position 
             b.removePeg(b1.getRow(), b1.getCol());
             b.removePeg(b2.getRow(), b2.getCol());
             b.removePeg(b3.getRow(), b3.getCol());
 
             //Have the Daleks move towards the doctor only if they have not crashed
-            if (b1.hasCrashed() == false) {
-                b1.advanceTowards(D);
-            }
-
-            if (b2.hasCrashed() == false) {
-                b2.advanceTowards(D);
-            }
-
-            if (b3.hasCrashed() == false) {
-                b3.advanceTowards(D);
-            }
+            b1.advanceTowards(D);
+            b2.advanceTowards(D);
+            b3.advanceTowards(D);
 
             //Put a Peg for the daleks of their New Position
             b.putPeg(Color.BLACK, b1.getRow(), b1.getCol());
             b.putPeg(Color.BLACK, b2.getRow(), b2.getCol());
             b.putPeg(Color.BLACK, b3.getRow(), b3.getCol());
-
 
             //CHECK IF DALEKS HAVE CRASHED
             //Check crash with b1 and b2, Put Red peg if they crash
@@ -85,10 +74,12 @@ public class CatchGame {
             //Check crash with b1 and b3, Put Red peg if they crash
             if (b1.crash(b3)) {
                 b.putPeg(Color.RED, b1.getRow(), b1.getCol());
+
             }
             //Check crash with b2 and b3, Put Red peg if they crash
             if (b2.crash(b3)) {
                 b.putPeg(Color.RED, b3.getRow(), b3.getCol());
+
             }
 
             //If all the daleks have crashed, you WIN
@@ -102,12 +93,6 @@ public class CatchGame {
                 b.displayMessage(" YOU LOST!");
                 break;
             }
-
-
-
-
-
-
 
         }
     }

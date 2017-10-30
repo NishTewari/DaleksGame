@@ -71,12 +71,13 @@ public class Dalek {
      */
     public boolean crash(Dalek a) {
         if (this.row == a.row && this.col == a.col) {
-           return hasCrashed = true;
+            return hasCrashed = true;
         } else {
-           return  hasCrashed = false;
+            return hasCrashed = false;
 
         }
     }
+
 
     /**
      * Returns whether or not this Dalek has crashed.
