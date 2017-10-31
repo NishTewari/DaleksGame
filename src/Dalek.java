@@ -31,6 +31,8 @@ public class Dalek {
     public void advanceTowards(Doctor doc) {
         //VERTICAL MOVEMENT
         //move upwards towards doctor
+        //advance towards only is hascrashed is false
+       if(!this.hasCrashed){
         if (this.row > doc.getRow()) {
             this.row--;
             //move downwards towards doctor 
@@ -47,7 +49,7 @@ public class Dalek {
             this.col++;
         }
     }
-
+    }
     /**
      * Returns the row of this Dalek.
      *
@@ -69,22 +71,29 @@ public class Dalek {
     /**
      * Sets the Dalek to be in a crashed state.
      */
-    public boolean crash(Dalek a) {
-        if (this.row == a.row && this.col == a.col) {
-            return hasCrashed = true;
-        } else {
-            return hasCrashed = false;
+    public void crash() {
+        this.hasCrashed = true;
 
-        }
-    }
-
-
+}
     /**
      * Returns whether or not this Dalek has crashed.
      *
      * @return true if this Dalek has crashed, false otherwise
      */
-    public boolean hasCrashed() {
-        return hasCrashed;
+    public boolean hasCrashed(Dalek a) { 
+        if(hasCrashed==false){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public boolean hit(Dalek a){
+        if (this.row == a.row && this.col == a.col) {
+            return true;
+        } else {
+            return false;
+    }
     }
 }
+    
+

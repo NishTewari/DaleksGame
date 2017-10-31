@@ -68,22 +68,26 @@ public class CatchGame {
 
             //CHECK IF DALEKS HAVE CRASHED
             //Check crash with b1 and b2, Put Red peg if they crash
-            if (b1.crash(b2)) {
+            if (b1.hit(b2)) {
                 b.putPeg(Color.RED, b1.getRow(), b1.getCol());
+                b1.crash();
+                b2.crash();
             }
             //Check crash with b1 and b3, Put Red peg if they crash
-            if (b1.crash(b3)) {
+            if (b1.hit(b3)) {
                 b.putPeg(Color.RED, b1.getRow(), b1.getCol());
-
+                b1.crash();
+                b3.crash();
             }
             //Check crash with b2 and b3, Put Red peg if they crash
-            if (b2.crash(b3)) {
+            if (b2.hit(b3)) {
                 b.putPeg(Color.RED, b3.getRow(), b3.getCol());
-
+                b2.crash();
+                b3.crash();
             }
 
             //If all the daleks have crashed, you WIN
-            if (b1.crash(b2) && b1.crash(b3) && b2.crash(b3)) {
+            if (b1.hit(b2) && b1.hit(b3) && b2.hit(b3)) {
                 b.displayMessage("You WIN!");
                 break;
             }
