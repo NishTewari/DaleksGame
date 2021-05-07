@@ -7,7 +7,7 @@ import java.awt.Color;
  */
 /**
  *
- * @author tewan2657
+ * @author Nish 
  */
 public class BoardExample {
 
